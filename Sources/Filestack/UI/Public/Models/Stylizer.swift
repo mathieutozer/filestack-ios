@@ -6,6 +6,8 @@
 //  Copyright © 2018 Filestack. All rights reserved.
 //
 
+#if os(iOS)
+
 import UIKit
 
 /// Object used to pass set colors, fonts and defaults style of Picker.
@@ -218,3 +220,5 @@ import UIKit
         return self
     }
 }
+
+#endif

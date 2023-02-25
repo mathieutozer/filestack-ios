@@ -6,7 +6,12 @@
 //  Copyright © 2021 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
+
 import Filestack
 import FilestackSDK
 

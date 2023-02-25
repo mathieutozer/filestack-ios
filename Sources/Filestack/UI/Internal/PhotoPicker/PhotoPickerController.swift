@@ -6,6 +6,7 @@
 //  Copyright © 2018 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import Photos
 import UIKit
 
@@ -133,3 +134,5 @@ extension PhotoPickerController: AssetSelectionDelegate {
         }
     }
 }
+
+#endif

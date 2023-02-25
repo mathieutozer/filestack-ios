@@ -7,13 +7,18 @@
 //
 
 import FilestackSDK
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 private extension String {
     static let cloudItemReuseIdentifier = "CloudItemTableViewCell"
     static let activityIndicatorReuseIdentifier = "ActivityIndicatorTableViewCell"
 }
 
+#if os(iOS)
 private let rowHeight: CGFloat = 52
 
 class CloudSourceTableViewController: UITableViewController {
@@ -229,3 +234,4 @@ private extension CloudSourceTableViewController {
     }
 }
 
+#endif

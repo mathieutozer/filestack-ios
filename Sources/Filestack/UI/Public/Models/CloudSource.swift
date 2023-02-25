@@ -6,12 +6,16 @@
 //  Copyright © 2017 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 /// Represents a type of cloud source to be used in the picker.
 @objc(FSCloudSource) public class CloudSource: NSObject, CellDescriptibleSource {
     let provider: CloudProvider
-    let iconImage: UIImage
+    let iconImage: PlatformImage
     let textDescription: String
 
     /// Initializer for a `CloudSource`.
@@ -19,7 +23,7 @@ import UIKit
     /// - Parameter description: A `String` describing the cloud source.
     /// - Parameter image: An `UIImage` visually describing the cloud source.
     /// - Parameter provider: A `CloudProvider` that better represents the cloud source.
-    @objc public init(description: String, image: UIImage, provider: CloudProvider) {
+    @objc public init(description: String, image: PlatformImage, provider: CloudProvider) {
         self.textDescription = description
         self.iconImage = image
         self.provider = provider

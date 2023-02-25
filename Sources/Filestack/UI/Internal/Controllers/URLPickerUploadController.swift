@@ -6,6 +6,7 @@
 //  Copyright © 2021 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import FilestackSDK
 import UIKit
 import ZIPFoundation
@@ -152,3 +153,4 @@ extension URLPickerUploadController {
         return destinationURL
     }
 }
+#endif

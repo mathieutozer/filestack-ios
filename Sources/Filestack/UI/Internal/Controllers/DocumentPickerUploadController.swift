@@ -7,6 +7,7 @@
 //
 
 import FilestackSDK
+#if os(iOS)
 import UIKit
 
 class DocumentPickerUploadController: URLPickerUploadController {
@@ -43,3 +44,5 @@ extension DocumentPickerUploadController: UIDocumentPickerDelegate {
         }
     }
 }
+
+#endif

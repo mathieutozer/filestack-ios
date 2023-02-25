@@ -6,6 +6,8 @@
 //  Copyright © 2018 Mihály Papp. All rights reserved.
 //
 
+#if os(iOS)
+
 import UIKit
 
 class CircleLayer: CALayer {
@@ -60,3 +62,5 @@ private extension CircleLayer {
         return path.cgPath
     }
 }
+
+#endif

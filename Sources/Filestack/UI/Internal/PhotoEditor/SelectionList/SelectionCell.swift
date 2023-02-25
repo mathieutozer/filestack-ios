@@ -6,6 +6,7 @@
 //  Copyright © 2018 Mihály Papp. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 class SelectionCell: UICollectionViewCell {
@@ -216,3 +217,5 @@ extension SelectionCell: SelectableElementDelegate {
         setNeedsDisplay()
     }
 }
+
+#endif

@@ -6,6 +6,7 @@
 //  Copyright © 2018 Mihály Papp. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 extension EditorViewController {
@@ -71,3 +72,4 @@ private extension EditorViewController {
         preview.bottomAnchor.constraint(equalTo: topToolbar.topAnchor).isActive = true
     }
 }
+#endif

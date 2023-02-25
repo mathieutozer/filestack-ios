@@ -6,13 +6,21 @@
 //  Copyright © 2018 Filestack. All rights reserved.
 //
 
+
+
 import Photos
+#if os(iOS)
 import UIKit
+public typealias PlatformScreen = UIScreen
+#else
+import Cocoa
+public typealias PlatformScreen = NSScreen
+#endif
 
 // MARK: - PHAsset Public Properties
 
 extension PHAsset {
-    func fetchImage(forSize size: CGSize, completion: @escaping (UIImage?, PHImageRequestID) -> Void) -> PHImageRequestID {
+    func fetchImage(forSize size: CGSize, completion: @escaping (PlatformImage?, PHImageRequestID) -> Void) -> PHImageRequestID {
         let getMaximumSize = (size == PHImageManagerMaximumSize)
         let scaledSize = getMaximumSize ? PHImageManagerMaximumSize : adjustToScreenScale(size: size)
         let manager = PHImageManager.default()
@@ -48,7 +56,11 @@ private extension PHAsset {
 
 private extension PHAsset {
     func adjustToScreenScale(size: CGSize) -> CGSize {
+      #if os(iOS)
         let scale = UIScreen.main.scale
+      #else
+        let scale = 2.0
+      #endif
 
         return CGSize(width: size.width * scale, height: size.height * scale)
     }
@@ -82,3 +94,4 @@ extension PHAssetCollection {
         return allAssets
     }
 }
+

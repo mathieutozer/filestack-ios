@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if os(iOS)
 import MobileCoreServices.UTType
+#endif
 
 extension String {
     var UTI: CFString? {

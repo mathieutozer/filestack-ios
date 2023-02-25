@@ -7,6 +7,7 @@
 //
 
 import FilestackSDK
+#if os(iOS)
 import UIKit
 
 class SourceTableViewController: UITableViewController {
@@ -365,3 +366,4 @@ private extension SourceTableViewController {
         }
     }
 }
+#endif

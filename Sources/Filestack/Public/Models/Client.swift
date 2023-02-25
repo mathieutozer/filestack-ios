@@ -61,6 +61,7 @@ private typealias CompletionHandler = (_ response: CloudResponse, _ safariError:
         super.init()
     }
 
+#if os(iOS)
     // MARK: - Public Functions
 
     /// Returns an instance of a `PickerNavigationController` that will allow the user to interactively pick files from
@@ -76,6 +77,7 @@ private typealias CompletionHandler = (_ response: CloudResponse, _ safariError:
 
         return storyboard.instantiateViewController(for: scene)
     }
+#endif
 
     /// Uploads a single `Uploadable` to a given storage location.
     ///
@@ -139,6 +141,7 @@ private typealias CompletionHandler = (_ response: CloudResponse, _ safariError:
                                 completionHandler: completionHandler)
     }
 
+  #if os(iOS)
     /// Allows interactively picking file(s) from a local source (e.g. camera, photo library or documents) and,
     /// optionally, uploads the file(s) to Filestack.
     ///
@@ -212,6 +215,8 @@ private typealias CompletionHandler = (_ response: CloudResponse, _ safariError:
 
         return uploadController
     }
+
+  #endif
 
     /// Lists the content of a cloud provider at a given path. Results are paginated (see `pageToken` below.)
     ///
@@ -327,6 +332,7 @@ private extension Client {
                 return
             }
 
+          #if os(iOS)
             // Request authentication.
             let session = SFAuthenticationSession(url: authURL,
                                                   callbackURLScheme: self.config.callbackURLScheme) { url, error in
@@ -348,6 +354,7 @@ private extension Client {
             DispatchQueue.main.async {
                 session.start()
             }
+#endif
         }
     }
 }

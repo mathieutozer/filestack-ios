@@ -1,25 +1,14 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "FilestackSDK",
-        "repositoryURL": "https://github.com/filestack/filestack-swift",
-        "state": {
-          "branch": null,
-          "revision": "5ba0ac9ca2fb53ccf18335b1654b8cc600785b66",
-          "version": "2.8.0"
-        }
-      },
-      {
-        "package": "ZIPFoundation",
-        "repositoryURL": "https://github.com/weichsel/ZIPFoundation.git",
-        "state": {
-          "branch": null,
-          "revision": "cf10bbff6ac3b873e97b36b9784c79866a051a8e",
-          "version": "0.9.12"
-        }
+  "pins" : [
+    {
+      "identity" : "zipfoundation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/weichsel/ZIPFoundation.git",
+      "state" : {
+        "revision" : "43ec568034b3731101dbf7670765d671c30f54f3",
+        "version" : "0.9.16"
       }
-    ]
-  },
-  "version": 1
+    }
+  ],
+  "version" : 2
 }

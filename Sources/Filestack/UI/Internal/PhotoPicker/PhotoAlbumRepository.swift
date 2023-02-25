@@ -6,6 +6,7 @@
 //  Copyright © 2018 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import Photos
 
 struct Album {
@@ -37,3 +38,5 @@ class PhotoAlbumRepository {
         }
     }
 }
+
+#endif

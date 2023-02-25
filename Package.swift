@@ -1,21 +1,24 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.7
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "Filestack",
-    platforms: [.iOS(.v11)],
+    platforms: [
+      .iOS(.v11),
+      .macOS(.v13)
+    ],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "Filestack",
             targets: ["Filestack"]
         ),
     ],
     dependencies: [
-        .package(name: "FilestackSDK", url: "https://github.com/filestack/filestack-swift", .upToNextMajor(from: Version(2, 7, 0))),
-        .package(url: "https://github.com/weichsel/ZIPFoundation.git", .upToNextMajor(from: Version(0, 9, 0)))
+///        .package(name: "FilestackSDK", url: "https://github.com/filestack/filestack-swift", .upToNextMajor(from: Version(2, 7, 0))),
+      .package(url: "https://github.com/weichsel/ZIPFoundation.git", from: "0.9.0"),
+      .package(name: "FilestackSDK", path: "../filestack-swift"),
     ],
     targets: [
         .target(

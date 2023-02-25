@@ -6,6 +6,7 @@
 //  Copyright © 2018 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 class AlbumListViewController: UITableViewController {
@@ -129,3 +130,5 @@ extension AlbumListViewController {
         }
     }
 }
+
+#endif

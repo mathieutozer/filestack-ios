@@ -6,7 +6,11 @@
 //  Copyright © 2018 Mihály Papp. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 extension CGRect {
     func scaled(by scale: CGFloat) -> CGRect {

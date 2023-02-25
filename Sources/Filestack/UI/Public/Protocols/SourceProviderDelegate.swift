@@ -6,7 +6,11 @@
 //  Copyright © 2021 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 public protocol SourceProviderDelegate: AnyObject {
     /// Called when one or more URLs were picked by this source provider.

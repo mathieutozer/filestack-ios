@@ -7,33 +7,54 @@
 //
 
 import Foundation
+#if os(iOS)
 import UIKit.UIImage
+#else
+import Cocoa
 
-extension UIEdgeInsets {
-    func rounded() -> UIEdgeInsets {
-        return UIEdgeInsets(top: top.rounded(), left: left.rounded(), bottom: bottom.rounded(), right: right.rounded())
+extension NSImage {
+  var ciImage: CIImage? {
+//    NSImage * image    = [self currentImage];
+//    NSData  * tiffData = [image TIFFRepresentation];
+//    NSBitmapImageRep * bitmap;
+//    bitmap = [NSBitmapImageRep imageRepWithData:tiffData];
+//
+//    CIImage * ciImage = [[CIImage alloc] initWithBitmapImageRep:bitmap];
+    if let data = self.tiffRepresentation,
+       let bitmap = NSBitmapImageRep(data: data) {
+      return CIImage(bitmapImageRep: bitmap)
+    }
+    return nil
+  }
+}
+#endif
+
+extension PlatformEdgeInsets {
+    func rounded() -> PlatformEdgeInsets {
+        return PlatformEdgeInsets(top: top.rounded(), left: left.rounded(), bottom: bottom.rounded(), right: right.rounded())
     }
 }
 
-extension UIImage {
+extension PlatformImage {
+  #if os(iOS)
     /// Returns a 90 degree-rotated image with a `CIImage` as the backing image.
     ///
     /// - Parameter clockwise: If true, image is rotated clockwise, otherwise it is rotated anticlockwise.
     ///
-    func rotated(clockwise: Bool) -> UIImage? {
+    func rotated(clockwise: Bool) -> PlatformImage? {
         guard let ciImage = ciImage ?? CIImage(image: self) else { return nil }
 
         let transform = ciImage.orientationTransform(for: clockwise ? .right : .left)
         let outputImage = ciImage.transformed(by: transform)
 
-        return UIImage(ciImage: outputImage)
+        return PlatformImage(ciImage: outputImage)
     }
 
     /// Returns a cropped image with a `CIImage` as the backing image.
     ///
     /// - Parameter insets: Specifies how much should be inset on each side of the rect.
     ///
-    func cropped(by insets: UIEdgeInsets) -> UIImage? {
+    func cropped(by insets: PlatformEdgeInsets) -> PlatformImage? {
         guard let ciImage = ciImage ?? CIImage(image: self) else { return nil }
 
         let extent = ciImage.extent
@@ -50,7 +71,7 @@ extension UIImage {
     /// - Parameter radius: Circle's radius.
     /// - Parameter transformed: Whether to transform UIKit coordinates into Core Image coordinates. Defaults to false.
     ///
-    func circled(center: CGPoint, radius: CGFloat) -> UIImage? {
+    func circled(center: CGPoint, radius: CGFloat) -> PlatformImage? {
         guard let ciImage = ciImage ?? CIImage(image: self) else { return nil }
 
         let extent = ciImage.extent
@@ -86,21 +107,22 @@ extension UIImage {
 
     /// For `CIImage` backed `UIImage`s, this function returns an equivalent `CGImage` backed `UIImage`, whether as,
     /// for already `CGImage` backed `UIImage`s, it returns `self`.
-    func cgImageBackedCopy() -> UIImage? {
+    func cgImageBackedCopy() -> PlatformImage? {
         guard let ciImage = ciImage else { return self }
         guard let cgImage = CIContext().createCGImage(ciImage, from: ciImage.extent) else { return nil }
 
-        return UIImage(cgImage: cgImage)
+        return PlatformImage(cgImage: cgImage)
     }
 
     /// For `CGImage` backed `UIImage`s, this function returns an equivalent `CIImage` backed `UIImage`, whether as,
     /// for already `CIImage` backed `UIImage`s, it returns `self`.
-    func ciImageBackedCopy() -> UIImage? {
+    func ciImageBackedCopy() -> PlatformImage? {
         guard ciImage == nil else { return self }
         guard let ciImage = CIImage(image: self) else { return nil }
 
-        return UIImage(ciImage: ciImage)
+        return PlatformImage(ciImage: ciImage)
     }
+  #endif
 
     // MARK: - Private Functions
 

@@ -5,7 +5,7 @@
 //  Created by Mihály Papp on 03/07/2018.
 //  Copyright © 2018 Mihály Papp. All rights reserved.
 //
-
+#if os(iOS)
 import UIKit
 
 class EditorToolbar: UIToolbar {
@@ -179,3 +179,5 @@ private extension TopEditorToolbar {
         backgroundColor = .clear
     }
 }
+
+#endif

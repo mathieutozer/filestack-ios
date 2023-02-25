@@ -6,8 +6,8 @@
 //  Copyright © 2019 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
-
 extension UIViewController {
     func presentAlert(titled title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -16,3 +16,5 @@ extension UIViewController {
         self.present(alert, animated: false, completion: nil)
     }
 }
+
+#endif

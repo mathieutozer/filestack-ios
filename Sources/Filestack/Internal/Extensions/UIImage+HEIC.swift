@@ -7,9 +7,21 @@
 //
 
 import AVFoundation
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
 
-extension UIImage {
+extension NSImage {
+  var cgImage: CGImage? {
+    let cgImage = self.cgImage(forProposedRect: nil, context: nil, hints: nil)
+    return cgImage
+  }
+}
+#endif
+
+
+extension PlatformImage {
     func heicRepresentation(quality: Float) -> Data? {
         var imageData: Data?
         let destinationData = NSMutableData()
@@ -21,10 +33,17 @@ extension UIImage {
             return nil
         }
 
+#if os(iOS)
         let options: [CFString: Any] = [
             kCGImageDestinationLossyCompressionQuality: quality,
             kCGImagePropertyOrientation: cgImageOrientation.rawValue
         ]
+      #else
+      let options: [CFString: Any] = [
+          kCGImageDestinationLossyCompressionQuality: quality
+//          kCGImagePropertyOrientation: cgImageOrientation.rawValue
+      ]
+#endif
 
         CGImageDestinationAddImage(destination, cgImage, options as CFDictionary)
         CGImageDestinationFinalize(destination)
@@ -35,12 +54,13 @@ extension UIImage {
     }
 }
 
-extension UIImage {
+#if os(iOS)
+extension PlatformImage {
     var cgImageOrientation: CGImagePropertyOrientation { .init(imageOrientation) }
 }
 
 extension CGImagePropertyOrientation {
-    init(_ uiOrientation: UIImage.Orientation) {
+    init(_ uiOrientation: PlatformImage.Orientation) {
         switch uiOrientation {
             case .up: self = .up
             case .upMirrored: self = .upMirrored
@@ -55,3 +75,5 @@ extension CGImagePropertyOrientation {
         }
     }
 }
+
+#endif

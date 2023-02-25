@@ -6,6 +6,7 @@
 //  Copyright © 2018 Mihály Papp. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 protocol EditCropDelegate: EditDataSource {
@@ -214,3 +215,5 @@ private extension CropGesturesHandler {
         cropInsets = UIEdgeInsets(top: max(0, top), left: max(0, left), bottom: max(0, bottom), right: max(0, right))
     }
 }
+
+#endif

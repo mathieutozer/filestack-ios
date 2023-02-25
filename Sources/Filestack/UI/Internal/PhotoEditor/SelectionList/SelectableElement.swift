@@ -6,6 +6,8 @@
 //  Copyright © 2019 Filestack. All rights reserved.
 //
 
+#if os(iOS)
+
 import Photos
 import UIKit
 
@@ -139,3 +141,5 @@ extension SelectableElement {
         }
     }
 }
+
+#endif

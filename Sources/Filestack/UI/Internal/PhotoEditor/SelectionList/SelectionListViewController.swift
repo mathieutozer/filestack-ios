@@ -6,6 +6,7 @@
 //  Copyright © 2018 Mihály Papp. All rights reserved.
 //
 
+#if os(iOS)
 import Photos
 import UIKit
 
@@ -277,3 +278,5 @@ extension SelectionListViewController {
         return collectionView?.visibleCells as? [SelectionCell] ?? []
     }
 }
+
+#endif

@@ -6,6 +6,7 @@
 //  Copyright © 2019 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 class CollectionViewFlowLayout: UICollectionViewFlowLayout {
@@ -19,3 +20,5 @@ class CollectionViewFlowLayout: UICollectionViewFlowLayout {
         return (self.collectionView?.bounds ?? newBounds) == newBounds
     }
 }
+
+#endif

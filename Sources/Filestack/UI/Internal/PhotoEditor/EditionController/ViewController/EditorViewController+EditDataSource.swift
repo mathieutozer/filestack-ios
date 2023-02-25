@@ -6,6 +6,7 @@
 //  Copyright © 2018 Mihály Papp. All rights reserved.
 //
 
+#if os(iOS)
 import AVFoundation
 import UIKit
 
@@ -33,3 +34,5 @@ extension EditorViewController: EditDataSource {
         return editor?.editedImage.size ?? .zero
     }
 }
+
+#endif

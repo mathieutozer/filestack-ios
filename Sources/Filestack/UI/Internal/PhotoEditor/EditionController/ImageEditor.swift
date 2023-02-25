@@ -6,6 +6,7 @@
 //  Copyright © 2019 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit.UIImage
 
 class ImageEditor {
@@ -78,3 +79,5 @@ extension ImageEditor {
         undoneImages.removeAll()
     }
 }
+
+#endif

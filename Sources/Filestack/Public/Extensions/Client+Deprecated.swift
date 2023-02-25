@@ -7,7 +7,11 @@
 //
 
 import FilestackSDK
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 extension Client {
     // MARK: - Deprecated
@@ -46,6 +50,7 @@ extension Client {
                       completionHandler: completionHandler)
     }
 
+  #if os(iOS)
     /// Uploads a file to a given storage location picked interactively from the camera or the photo library.
     ///
     /// - Parameter viewController: The view controller that will present the picker.
@@ -177,4 +182,5 @@ extension Client {
                          pickCompletionHandler: nil,
                          uploadCompletionHandler: completionHandler)
     }
+#endif
 }

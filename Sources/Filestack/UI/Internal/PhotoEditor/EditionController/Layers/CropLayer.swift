@@ -6,6 +6,8 @@
 //  Copyright © 2018 Mihály Papp. All rights reserved.
 //
 
+#if os(iOS)
+
 import UIKit
 
 class CropLayer: CALayer {
@@ -114,3 +116,5 @@ private extension CropLayer {
         return path.cgPath
     }
 }
+
+#endif

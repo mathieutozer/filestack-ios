@@ -6,6 +6,7 @@
 //  Copyright © 2019 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 enum ImageEditorCommand {
@@ -16,3 +17,5 @@ enum ImageEditorCommand {
     case redo
     case reset
 }
+
+#endif

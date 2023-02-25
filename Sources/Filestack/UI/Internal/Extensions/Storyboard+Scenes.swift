@@ -6,6 +6,7 @@
 //  Copyright © 2017 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 extension UIStoryboard {
@@ -19,3 +20,4 @@ extension UIStoryboard {
         return viewController
     }
 }
+#endif

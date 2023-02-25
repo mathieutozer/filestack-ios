@@ -6,6 +6,7 @@
 //  Copyright © 2019 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import FilestackSDK
 import Foundation
 
@@ -18,3 +19,5 @@ struct PickerNavigationScene: Scene {
         viewController.storeOptions = storeOptions
     }
 }
+
+#endif

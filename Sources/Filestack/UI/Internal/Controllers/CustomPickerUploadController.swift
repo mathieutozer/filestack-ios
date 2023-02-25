@@ -7,6 +7,7 @@
 //
 
 import FilestackSDK
+#if os(iOS)
 import UIKit
 
 class CustomPickerUploadController: URLPickerUploadController {
@@ -38,3 +39,5 @@ extension CustomPickerUploadController: SourceProviderDelegate {
         cancel()
     }
 }
+
+#endif

@@ -6,10 +6,15 @@
 //  Copyright © 2018 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
-extension UIImage {
-    func with(written text: String, atPoint point: CGPoint) -> UIImage {
+#if os(iOS)
+extension PlatformImage {
+    func with(written text: String, atPoint point: CGPoint) -> PlatformImage {
         let textSize = min(size.height, size.width) / 20
         let textColor = UIColor.white
         let textFont = UIFont(name: "Helvetica Bold", size: textSize)!
@@ -28,3 +33,5 @@ extension UIImage {
         return newImage ?? self
     }
 }
+
+#endif

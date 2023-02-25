@@ -6,9 +6,12 @@
 //  Copyright © 2017 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 class CloudItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var label: UILabel!
 }
+
+#endif

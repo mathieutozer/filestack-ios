@@ -6,8 +6,12 @@
 //  Copyright © 2017 Filestack. All rights reserved.
 //
 
+#if os(iOS)
+
 import UIKit
 
 class ActivityIndicatorTableViewCell: UITableViewCell {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 }
+
+#endif

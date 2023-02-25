@@ -5,7 +5,7 @@
 //  Created by Ruben Nine on 30/7/21.
 //  Copyright © 2021 Filestack. All rights reserved.
 //
-
+#if os(iOS)
 import UIKit
 
 /// `SourceProvider` defines the protocol that must be implemented by any view controllers that should be used to
@@ -17,3 +17,5 @@ public protocol SourceProvider: UIViewController {
     /// Initializer for this source provider.
     init()
 }
+
+#endif

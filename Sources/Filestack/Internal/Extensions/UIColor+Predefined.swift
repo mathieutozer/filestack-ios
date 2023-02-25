@@ -6,14 +6,18 @@
 //  Copyright © 2018 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
-extension UIColor {
-    static var appleBlue: UIColor {
-        return UIColor(red: 0, green: 122 / 255, blue: 1, alpha: 1)
+extension PlatformColor {
+    static var appleBlue: PlatformColor {
+        return PlatformColor(red: 0, green: 122 / 255, blue: 1, alpha: 1)
     }
 
-    static var appleTableSeparator: UIColor {
-        return UIColor(red: 224 / 255, green: 224 / 255, blue: 224 / 255, alpha: 1)
+    static var appleTableSeparator: PlatformColor {
+        return PlatformColor(red: 224 / 255, green: 224 / 255, blue: 224 / 255, alpha: 1)
     }
 }

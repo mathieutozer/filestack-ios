@@ -7,6 +7,7 @@
 //
 
 import FilestackSDK
+#if os(iOS)
 import UIKit
 
 final class MonitorViewController: UIViewController {
@@ -178,3 +179,5 @@ private extension MonitorViewController {
         progressObservers.removeAll()
     }
 }
+
+#endif

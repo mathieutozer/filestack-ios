@@ -9,7 +9,9 @@
 import AVFoundation.AVAssetExportSession
 import FilestackSDK
 import Photos
+#if os(iOS)
 import UIKit
+
 import PhotosUI
 
 class ImagePickerUploadController: NSObject, Cancellable, Monitorizable, Startable {
@@ -101,6 +103,7 @@ private extension ImagePickerUploadController {
         return picker
     }
 
+  #if os(iOS)
     var legacyNativePicker: UIImagePickerController {
         let picker = UIImagePickerController()
 
@@ -127,6 +130,7 @@ private extension ImagePickerUploadController {
 
         return navigation
     }
+  #endif
 }
 
 // MARK: - Private Functions
@@ -377,3 +381,5 @@ extension ImagePickerUploadController: UploadListDelegate {
         }
     }
 }
+
+#endif

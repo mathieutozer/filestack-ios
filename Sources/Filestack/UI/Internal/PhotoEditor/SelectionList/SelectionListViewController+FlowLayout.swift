@@ -6,6 +6,7 @@
 //  Copyright © 2018 Mihály Papp. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 extension SelectionListViewController: UICollectionViewDelegateFlowLayout {
@@ -60,3 +61,5 @@ private extension SelectionListViewController {
         return 6
     }
 }
+
+#endif

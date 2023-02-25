@@ -6,9 +6,21 @@
 //  Copyright © 2019 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
 
-extension UIImage {
+func jpegDataFrom(image:NSImage) -> Data? {
+  let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)!
+  let bitmapRep = NSBitmapImageRep(cgImage: cgImage)
+  let jpegData = bitmapRep.representation(using: NSBitmapImageRep.FileType.jpeg, properties: [:])
+  return jpegData
+}
+
+#endif
+
+extension PlatformImage {
     func exportHEICImage(to destinationURL: URL, quality: Float) -> Bool {
         guard let imageData = heicRepresentation(quality: quality) else { return false }
 
@@ -16,7 +28,11 @@ extension UIImage {
     }
 
     func exportJPGImage(to destinationURL: URL, quality: Float) -> Bool {
+#if os(iOS)
         guard let imageData = jpegData(compressionQuality: CGFloat(quality)) else { return false }
+      #else
+      guard let imageData = jpegDataFrom(image: self) else { return false }
+      #endif
 
         return export(data: imageData, to: destinationURL)
     }

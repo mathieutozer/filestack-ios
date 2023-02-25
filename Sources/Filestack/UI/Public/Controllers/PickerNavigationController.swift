@@ -6,6 +6,7 @@
 //  Copyright © 2017 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import FilestackSDK
 import UIKit
 
@@ -57,3 +58,5 @@ extension PickerNavigationController: StylizerDelegate {
         navigationBar.barStyle = stylizer.navBar.style
     }
 }
+
+#endif

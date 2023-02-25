@@ -8,7 +8,11 @@
 
 import AVFoundation.AVAssetExportSession
 import Foundation
+#if os(iOS)
 import UIKit.UIImagePickerController
+#else
+import Cocoa
+#endif
 import PhotosUI
 
 /// The `Config` class is used together with `Client` to configure certain aspects of the API.
@@ -38,9 +42,11 @@ import PhotosUI
     /// The default value is 1.
     @objc public var maximumSelectionAllowed: UInt = 1
 
+  #if os(iOS)
     /// This settings determines the way we want to present document picker, image pickers and upload monitor.
     /// The default presentation style is `.currentContext`
     @objc public var modalPresentationStyle: UIModalPresentationStyle = .currentContext
+  #endif
 
     /// This setting determines what cloud sources are available when using the picker.
     /// By default, it contains all the supported cloud sources.
@@ -48,9 +54,12 @@ import PhotosUI
     /// [Developer Portal](http://dev.filestack.com), regardless of whether it is present in this list.
     @objc public var availableCloudSources: [CloudSource] = CloudSource.all()
 
+  #if os(iOS)
     /// This setting determines what local sources are available when using the picker.
     /// By default, it contains all the supported local sources.
     @objc public var availableLocalSources: [LocalSource] = LocalSource.all()
+
+  #endif
 
     /// This setting determines what document types can be picked when using Apple's document picker.
     /// By default, this contains `["public.item"]`.
@@ -79,6 +88,7 @@ import PhotosUI
     /// The default value is `AVAssetExportPresetHEVCHighestQuality`
     @objc public var videoExportPreset: String = AVAssetExportPresetHEVCHighestQuality
 
+#if os(iOS)
     /// This setting determines the video recording quality for videos recorded using the camera.
     /// It is also used whenever picking a recorded movie. Specifically, if the video quality setting is lower than the
     /// video quality of an existing movie, displaying that movie in the picker results in transcoding the movie to the
@@ -86,6 +96,7 @@ import PhotosUI
     ///
     /// The default value is `.typeMedium`
     @objc public var videoQuality: UIImagePickerController.QualityType = .typeMedium
+#endif
 
     /// This setting determines what kind of asset types can be picked when using the new photos picker
     /// ([PHPickerViewController](https://developer.apple.com/documentation/photokit/phpickerviewcontroller))
@@ -103,15 +114,21 @@ extension Config {
         private var callbackURLScheme: String?
         private var cloudThumbnailCachePolicy: URLRequest.CachePolicy?
         private var maximumSelectionAllowed: UInt?
+      #if os(iOS)
         private var modalPresentationStyle: UIModalPresentationStyle?
+      #endif
         private var availableCloudSources: [CloudSource]?
+#if os(iOS)
         private var availableLocalSources: [LocalSource]?
+      #endif
         private var documentPickerAllowedUTIs: [String]?
         private var cloudSourceAllowedUTIs: [String]?
         private var imageURLExportPreset: ImageURLExportPreset?
         private var imageExportQuality: Float?
         private var videoExportPreset: String?
+      #if os(iOS)
         private var videoQuality: UIImagePickerController.QualityType?
+      #endif
         private var photosPickerFilter: [PhotosPickerFilter]?
 
         override init() {}
@@ -139,23 +156,26 @@ extension Config {
             return self
         }
 
+      #if os(iOS)
         /// :nodoc:
         @objc public func with(modalPresentationStyle: UIModalPresentationStyle) -> Self {
             self.modalPresentationStyle = modalPresentationStyle
             return self
         }
+      #endif
 
         /// :nodoc:
         @objc public func with(availableCloudSources: [CloudSource]) -> Self {
             self.availableCloudSources = availableCloudSources
             return self
         }
-
+#if os(iOS)
         /// :nodoc:
         @objc public func with(availableLocalSources: [LocalSource]) -> Self {
             self.availableLocalSources = availableLocalSources
             return self
         }
+#endif
 
         /// :nodoc:
         @objc public func with(documentPickerAllowedUTIs: [String]) -> Self {
@@ -187,11 +207,13 @@ extension Config {
             return self
         }
 
+      #if os(iOS)
         /// :nodoc:
         @objc public func with(videoQuality: UIImagePickerController.QualityType) -> Self {
             self.videoQuality = videoQuality
             return self
         }
+      #endif
 
         /// :nodoc:
         @objc public func withEditorEnabled() -> Self {
@@ -224,18 +246,20 @@ extension Config {
             if let maximumSelectionAllowed = maximumSelectionAllowed {
                 config.maximumSelectionAllowed = maximumSelectionAllowed
             }
-
+#if os(iOS)
             if let modalPresentationStyle = modalPresentationStyle {
                 config.modalPresentationStyle = modalPresentationStyle
             }
+#endif
 
             if let availableCloudSources = availableCloudSources {
                 config.availableCloudSources = availableCloudSources
             }
-
+#if os(iOS)
             if let availableLocalSources = availableLocalSources {
                 config.availableLocalSources = availableLocalSources
             }
+#endif
 
             if let documentPickerAllowedUTIs = documentPickerAllowedUTIs {
                 config.documentPickerAllowedUTIs = documentPickerAllowedUTIs
@@ -256,10 +280,11 @@ extension Config {
             if let videoExportPreset = videoExportPreset {
                 config.videoExportPreset = videoExportPreset
             }
-
+#if os(iOS)
             if let videoQuality = videoQuality {
                 config.videoQuality = videoQuality
             }
+#endif
 
             if let photosPickerFilter = photosPickerFilter {
                 config.photosPickerFilter = photosPickerFilter

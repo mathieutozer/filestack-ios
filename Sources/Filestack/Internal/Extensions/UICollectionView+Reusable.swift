@@ -6,6 +6,7 @@
 //  Copyright © 2018 Mihály Papp. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 private extension UICollectionViewCell {
@@ -24,3 +25,5 @@ extension UICollectionView {
         return reusable as? Cell
     }
 }
+
+#endif

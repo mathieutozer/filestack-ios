@@ -7,7 +7,11 @@
 //
 
 import Photos
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 class URLExtractor {
     // MARK: - Private Properties
@@ -60,7 +64,7 @@ extension URLExtractor {
         return operation
     }
 
-    func fetchURL(image: UIImage) -> URL? {
+    func fetchURL(image: PlatformImage) -> URL? {
         switch imageExportPreset {
         case .current:
             // Use HEIC, and fallback to JPEG if it fails, since HEIC is not available in all devices
@@ -124,7 +128,7 @@ private extension URLExtractor {
         }
     }
 
-    func exportedHEICImageURL(image: UIImage) -> URL? {
+    func exportedHEICImageURL(image: PlatformImage) -> URL? {
         if let imageData = image.heicRepresentation(quality: cameraImageQuality) {
             let filename = UUID().uuidString + ".heic"
             return writeImageDataToURL(imageData: imageData, filename: filename)
@@ -133,11 +137,18 @@ private extension URLExtractor {
         return nil
     }
 
-    func exportedJPEGImageURL(image: UIImage) -> URL? {
+    func exportedJPEGImageURL(image: PlatformImage) -> URL? {
+#if os(iOS)
         if let imageData = image.jpegData(compressionQuality: CGFloat(cameraImageQuality)) {
             let filename = UUID().uuidString + ".jpeg"
             return writeImageDataToURL(imageData: imageData, filename: filename)
         }
+      #else
+      if let imageData = jpegDataFrom(image: image) {
+          let filename = UUID().uuidString + ".jpeg"
+          return writeImageDataToURL(imageData: imageData, filename: filename)
+      }
+      #endif
 
         return nil
     }

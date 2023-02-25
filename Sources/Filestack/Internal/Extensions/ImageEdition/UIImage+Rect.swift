@@ -6,9 +6,13 @@
 //  Copyright © 2018 Mihály Papp. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
-extension UIImage {
+extension PlatformImage {
     var cgRect: CGRect {
         return CGRect(origin: .zero, size: size)
     }

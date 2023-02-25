@@ -6,10 +6,15 @@
 //  Copyright © 2019 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
-extension UIImage {
-    func resized(for size: CGSize) -> UIImage? {
+#if os(iOS)
+extension PlatformImage {
+    func resized(for size: CGSize) -> PlatformImage? {
         let renderer = UIGraphicsImageRenderer(size: size)
 
         return renderer.image { _ in
@@ -17,3 +22,5 @@ extension UIImage {
         }
     }
 }
+
+#endif

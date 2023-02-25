@@ -6,7 +6,11 @@
 //  Copyright © 2021 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 class CustomCell: UICollectionViewCell {
     let imageView = UIImageView()

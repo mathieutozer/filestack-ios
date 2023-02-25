@@ -6,10 +6,18 @@
 //  Copyright © 2019 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
-extension UIColor {
-    static func fromFilestackBundle(_ name: String) -> UIColor? {
-        return UIColor(named: name, in: bundle, compatibleWith: nil)
+extension PlatformColor {
+    static func fromFilestackBundle(_ name: String) -> PlatformColor? {
+      #if os(iOS)
+        return PlatformColor(named: name, in: bundle, compatibleWith: nil)
+      #else
+      return NSColor.red
+      #endif
     }
 }

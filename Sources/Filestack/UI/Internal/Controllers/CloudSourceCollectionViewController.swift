@@ -6,6 +6,7 @@
 //  Copyright © 2017 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import FilestackSDK
 import UIKit
 
@@ -251,3 +252,4 @@ private extension CloudSourceCollectionViewController {
     }
 }
 
+#endif

@@ -9,6 +9,7 @@
 import FilestackSDK
 import Foundation
 
+#if os(iOS)
 struct CloudSourceTabBarScene: Scene {
     let client: Client
     let storeOptions: StorageOptions
@@ -30,3 +31,4 @@ struct CloudSourceTabBarScene: Scene {
         viewController.viewType = viewType
     }
 }
+#endif

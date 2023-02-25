@@ -6,6 +6,7 @@
 //  Copyright © 2018 Mihály Papp. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 protocol EditCircleDelegate: EditDataSource {
@@ -207,3 +208,5 @@ private extension CircleGesturesHandler {
         move(by: .zero)
     }
 }
+
+#endif

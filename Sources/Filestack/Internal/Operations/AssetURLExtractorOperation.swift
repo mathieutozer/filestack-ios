@@ -8,7 +8,11 @@
 
 import FilestackSDK
 import Photos
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 class AssetURLExtractorOperation: BaseOperation<[URL]>, ProgressReporting {
     // MARK: - Internal Properties
@@ -95,7 +99,7 @@ private extension AssetURLExtractorOperation {
                 guard !self.isCancelled else { return }
 
                 switch uploadable {
-                case let image as UIImage:
+                case let image as PlatformImage:
                     if let url = self.urlExtractor.fetchURL(image: image) {
                         markProgress(url, id)
                     } else {

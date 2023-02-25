@@ -6,6 +6,7 @@
 //  Copyright © 2018 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import Photos
 import UIKit
 
@@ -150,3 +151,5 @@ private extension AssetCollectionViewController {
         }
     }
 }
+
+#endif

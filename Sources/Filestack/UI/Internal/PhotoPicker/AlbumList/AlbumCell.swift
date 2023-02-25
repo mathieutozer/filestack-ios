@@ -6,6 +6,7 @@
 //  Copyright © 2018 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import Photos
 import UIKit
 
@@ -40,3 +41,5 @@ class AlbumCell: UITableViewCell {
         requestIDs.removeAll()
     }
 }
+
+#endif

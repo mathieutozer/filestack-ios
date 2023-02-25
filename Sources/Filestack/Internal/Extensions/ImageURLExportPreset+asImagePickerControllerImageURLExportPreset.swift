@@ -6,6 +6,7 @@
 //  Copyright © 2019 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 extension ImageURLExportPreset {
@@ -18,3 +19,4 @@ extension ImageURLExportPreset {
         }
     }
 }
+#endif

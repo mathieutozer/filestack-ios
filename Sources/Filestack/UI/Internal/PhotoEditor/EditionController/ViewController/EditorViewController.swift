@@ -6,6 +6,8 @@
 //  Copyright © 2018 Mihály Papp. All rights reserved.
 //
 
+#if os(iOS)
+
 import UIKit
 
 final class EditorViewController: UIViewController, UIGestureRecognizerDelegate {
@@ -149,3 +151,5 @@ extension EditorViewController: EditCircleDelegate {
         updateCirclePaths()
     }
 }
+
+#endif

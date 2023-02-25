@@ -7,7 +7,11 @@
 //
 
 import FilestackSDK
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 private struct URLSessionTaskTracker {
     private var tasks: [URLSessionTask] = [URLSessionTask]()
@@ -31,6 +35,8 @@ private struct URLSessionTaskTracker {
         }
     }
 }
+
+#if os(iOS)
 
 class CloudSourceTabBarController: UITabBarController, CloudSourceDataSource {
     var client: Client!
@@ -338,3 +344,5 @@ class CloudSourceTabBarController: UITabBarController, CloudSourceDataSource {
         }
     }
 }
+
+#endif

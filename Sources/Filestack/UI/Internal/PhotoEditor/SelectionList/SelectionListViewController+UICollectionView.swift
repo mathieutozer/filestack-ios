@@ -6,6 +6,7 @@
 //  Copyright © 2018 Mihály Papp. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 extension SelectionListViewController {
@@ -48,3 +49,5 @@ extension SelectionListViewController {
         return
     }
 }
+
+#endif

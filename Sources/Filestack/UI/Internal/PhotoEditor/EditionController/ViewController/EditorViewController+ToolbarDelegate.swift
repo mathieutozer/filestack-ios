@@ -8,6 +8,7 @@
 
 import Foundation
 
+#if os(iOS)
 extension EditorViewController: EditorToolbarDelegate {
     func cancelSelected() {
         dismiss(animated: true) {
@@ -88,3 +89,5 @@ extension EditorViewController: EditorToolbarDelegate {
         topToolbar.setActions(showUndo: editor.canUndo(), showRedo: editor.canRedo())
     }
 }
+
+#endif

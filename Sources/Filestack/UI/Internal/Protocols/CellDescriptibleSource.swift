@@ -6,13 +6,18 @@
 //  Copyright © 2017 Filestack. All rights reserved.
 //
 
+#if os(iOS)
+
 import UIKit
+#endif
 
 protocol CellDescriptibleSource {
-    var iconImage: UIImage { get }
+    var iconImage: PlatformImage { get }
     var textDescription: String { get }
 }
 
 func == (lhs: CellDescriptibleSource, rhs: CellDescriptibleSource) -> Bool {
     return lhs.textDescription == rhs.textDescription
 }
+
+
