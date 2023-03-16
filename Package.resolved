@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "filestack-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mathieutozer/filestack-swift",
+      "state" : {
+        "branch" : "master",
+        "revision" : "93eb0a748e25acfa1d1c316e3ebc659f6842cd35"
+      }
+    },
+    {
       "identity" : "zipfoundation",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/weichsel/ZIPFoundation.git",
