@@ -91,8 +91,9 @@ import Cocoa
 
     /// Returns all the supported sources.
     @objc public static func all() -> [CloudSource] {
-        return [.facebook, .instagram, .googleDrive, .dropbox, .box, .gitHub,
-                .gmail, .googlePhotos, .oneDrive, .amazonDrive, .unsplash, .customSource]
+      return []
+//        return [.facebook, .instagram, .googleDrive, .dropbox, .box, .gitHub,
+//                .gmail, .googlePhotos, .oneDrive, .amazonDrive, .unsplash, .customSource]
     }
 
     /// Returns this source's title.
