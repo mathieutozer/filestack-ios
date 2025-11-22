@@ -1,5 +1,5 @@
 //
-//  Uploadable.swift
+//  Uploadable/Users/tozer/code/Trippy/Trips.xcodeproj.swift
 //  Filestack
 //
 //  Created by Mihály Papp on 30/07/2018.
@@ -42,7 +42,11 @@ extension AVAsset: Uploadable {
         let beginning = CMTime(seconds: 0, preferredTimescale: 1)
         do {
             let cgImage = try AVAssetImageGenerator(asset: self).copyCGImage(at: beginning, actualTime: nil)
+          #if os(macOS)
           return PlatformImage(cgImage: cgImage, size: .zero)
+          #else
+          return PlatformImage(cgImage: cgImage)
+          #endif
         } catch _ {
             return PlatformImage() // TODO: return placeholder
         }
